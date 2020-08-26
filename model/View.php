@@ -10,7 +10,7 @@ class View
     }
 
     public function render($stranica,$parametri=[])
-    
+    {
         ob_start();
         extract($parametri);
         include BP . 'view' . DIRECTORY_SEPARATOR . $stranica . '.phtml';
