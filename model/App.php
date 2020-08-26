@@ -24,9 +24,9 @@ class App
             $funkcija=$djelovi[2];
         }
 
-        if(class_existst($klasa) && method_exists($klasa,$funkcija)){
+        if(class_exists($klasa) && method_exists($klasa,$funkcija)){
             $instanca = new $klasa();
-            $instanca->funkcija();
+            $instanca->$funkcija();
         }else{
             echo 'Kreirati funkciju unutar klase ' . $klasa . '-&gt;' . $funkcija;
         }
