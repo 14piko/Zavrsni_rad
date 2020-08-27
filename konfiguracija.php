@@ -2,7 +2,7 @@
 
 
 return [
-    'dev' => false,
+    'dev' => true,
     'nazivAPP' => 'Edunova APP',
-    'url' => 'http://polazik01.edunova.hr/'
+    'url' => 'http://polaznik01.edunova.hr/'
 ];
