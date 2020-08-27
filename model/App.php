@@ -28,6 +28,7 @@ class App
             $instanca = new $klasa();
             $instanca->$funkcija();
         }else{
+            // integrirati u view
             echo 'Kreirati funkciju unutar klase ' . $klasa . '-&gt;' . $funkcija;
         }
         
@@ -37,7 +38,7 @@ class App
     {
         $datoteka = BP . 'konfiguracija.php';
         $konfiguracija = include $datoteka;
-        
+
         if(array_key_exists($kljuc,$konfiguracija)){
             return $konfiguracija[$kljuc];
         }else if ($konfiguracija['dev']){
