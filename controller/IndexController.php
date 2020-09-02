@@ -47,5 +47,11 @@ class IndexController extends Controller
             //100% siguran da imaš email i lozinku
 
      }
+
+
+
+     public function test(){
+         echo password_hash("a", PASSWORD_BCRYPT);
+     }
 }
 
