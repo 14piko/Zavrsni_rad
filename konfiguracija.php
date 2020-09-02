@@ -20,7 +20,7 @@ if($dev){
     
 return [
     'dev' => $dev,
-    'nazivAPP' => 'Edunova APP',
+    'nazivAPP' => 'Ribička udruga',
     'url' => 'http://polaznik01.edunova.hr/',
     'baza' => $baza
 ];

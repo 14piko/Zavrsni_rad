@@ -8,9 +8,9 @@ class IndexController extends Controller
             'kljuc2' => [1,2,7,9]
         ]);
     }
-    public function onama()
+    public function oribolovu()
     {
-        $this->view->render('onama');
+        $this->view->render('oribolovu');
     }
 
     public function login(){
