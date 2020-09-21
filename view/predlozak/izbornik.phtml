@@ -8,14 +8,27 @@
     <ul class="dropdown menu" data-dropdown-menu>
       <li>
       <a href="<?=APP::config('url') ?>">
-            <?=APP::config('nazivAPP') ?>
+        <i class="fas fa-home"></i>
 </a>
     </li> 
 
       <li><a href="<?=APP::config('url') ?>index/oribolovu">O ribolovu</a></li>
       
       <?php if(isset($_SESSION['autoriziran'])): ?>
-        <!-- ovdje dođe privatni dio izbornika -->
+        <li>
+        <a href="#">Podaci</a>
+        <ul class="menu vertical">
+          <li><a href="<?=APP::config('url') ?>nadzornaploca/index">Nadzorna ploča</a></li>
+          <li><a href="<?=APP::config('url') ?>clanudruge/index">Članovi</a></li>
+          <li><a href="<?=APP::config('url') ?>riba/index">Ribe</a></li>
+          <li><a href="<?=APP::config('url') ?>rijeka/index">Rijeke</a></li>
+          <li><a href="<?=APP::config('url') ?>pecanje/index">Pecanje</a></li>
+          <?php if($_SESSION['autoriziran']->uloga==='admin'): ?>
+            <li><a href="<?=APP::config('url') ?>operater/index">Operateri</a></li>
+          <?php endif;  ?>
+        </ul>
+      </li>
+       
       <?php endif;  ?>
     </ul>
   </div>
