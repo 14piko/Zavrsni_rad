@@ -12,7 +12,10 @@
 </a>
     </li> 
 
-      <li><a href="<?=APP::config('url') ?>index/oribolovu">O ribolovu</a></li>
+      <li><a href="<?=APP::config('url') ?>index/oribolovu">
+      <i class="fas fa-fish"></i> O ribolovu
+      </a>
+      </li>
       
       <?php if(isset($_SESSION['autoriziran'])): ?>
         <li>
@@ -36,9 +39,13 @@
     <ul class="menu">
     <li>
       <?php if(!isset($_SESSION['autoriziran'])): ?>
-      <a href="<?=APP::config('url') ?>index/login">Login</a>
+      <a href="<?=APP::config('url') ?>index/login">
+      <i class="fas fa-sign-in-alt"></i>
+      </a>
       <?php else:  ?>
-      <a href="<?=APP::config('url') ?>index/logout">Logout</a>
+      <a href="<?=APP::config('url') ?>index/logout">
+      <i class="fas fa-sign-out-alt"></i>
+      </a>
       <?php endif;  ?>
     </li>
     </ul>
