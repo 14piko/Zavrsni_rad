@@ -44,7 +44,9 @@
       </a>
       <?php else:  ?>
       <a href="<?=APP::config('url') ?>index/logout">
-      <i class="fas fa-sign-out-alt"></i>
+      <i class="fas fa-sign-out-alt"></i> 
+      <?=$_SESSION['autoriziran']->ime?>, 
+      <?=$_SESSION['autoriziran']->uloga?>
       </a>
       <?php endif;  ?>
     </li>

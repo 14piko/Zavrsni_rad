@@ -13,6 +13,11 @@ class IndexController extends Controller
         $this->view->render('oribolovu');
     }
 
+    public function notfound($poruka)
+    {
+        $this->view->render('notfound',['poruka'=>$poruka]);
+    }
+
     public function login(){
         $this->loginView('', 'Popunite tražene podatke!');
         }
