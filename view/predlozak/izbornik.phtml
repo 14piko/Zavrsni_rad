@@ -28,6 +28,8 @@
           <li><a href="<?=APP::config('url') ?>pecanje/index">Pecanje</a></li>
           <?php if($_SESSION['autoriziran']->uloga==='admin'): ?>
             <li><a href="<?=APP::config('url') ?>operater/index">Operateri</a></li>
+          <?php else:  ?>
+            <li><a href="<?=APP::config('url') ?>nadzornaploca/profil">Profil operatera</a></li>
           <?php endif;  ?>
         </ul>
       </li>

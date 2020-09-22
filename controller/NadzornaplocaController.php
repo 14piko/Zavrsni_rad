@@ -10,5 +10,8 @@ class NadzornaplocaController extends AutorizacijaController
         $this->view->render($this->viewDir . 'nadzornaploca');
     }
 
+    public function profil(){
+        $this->view->render($this->viewDir . 'profil');
+    }
 
 }
