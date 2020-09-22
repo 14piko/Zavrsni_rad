@@ -3,21 +3,35 @@
     method="POST">
   
     <label>Ime
-        <input type="text" name="ime" />
+        <input type="text" name="ime" value="<?=$clanudruge['ime']?>"/>
     </label>
 
     <label>Prezime
-        <input type="text" name="prezime" />
+        <input type="text" name="prezime" value="<?=$clanudruge['prezime']?>" />
     </label>
 
     <label>Oib
-        <input type="number" name="oib" />
+        <input type="number" name="oib" value="<?=$clanudruge['oib']?>" />
     </label>
 
     <label>Broj dozvole
-        <input type="number" name="brojdozvole" />
+        <input type="number" name="brojdozvole" value="<?=$clanudruge['brojdozvole']?>" />
     </label>
 
-  <p><input type="submit" class="button expanded" value="Unesite novo"></input></p>
-    <?=$poruka ?>
+    <p>
+        <?=$poruka ?>
+    </p>
+
+    <div class="grid-x grid-padding-x">
+        <div class="large-6 small-12 cell">
+        <input type="submit" class="button expanded" 
+                value="Unesite novo"></input>
+        </div>
+        <div class="large-6 small-12 cell">
+        <a class="button expanded alert" href="<?=APP::config('url') ?>clanudruge/index">
+        Odustani!
+        </a>
+        </div>
+    </div>
+        
 </form>
