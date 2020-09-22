@@ -12,7 +12,7 @@ if($dev){
 }else{
     $baza=[
         'server' => 'localhost',
-        'baza' => 'polaznik_pp21',
+        'baza' => 'polaznik_zadatak',
         'korisnik' => 'polaznik_edunova',
         'lozinka' => 'edunova'
     ];  
