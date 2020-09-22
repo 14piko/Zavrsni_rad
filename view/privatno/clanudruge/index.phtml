@@ -2,7 +2,7 @@
 
 ?>
 
-<a class="button expanded success" href="#">
+<a class="button expanded success" href="<?=APP::config('url') ?>clanudruge/novo">
     <?php include BP . 'view/predlozak/izgledDodajnovi.phtml' ?>
 </a>
 
@@ -24,10 +24,10 @@
                 <td><?=$clan->oib?></td>
                 <td><?=$clan->brojdozvole?></td>
                 <td>
-                <a href="#">
+                <a href="<?=APP::config('url') ?>clanudruge/promjena?sifra=<?=$clan->sifra?>">
                 <?php include BP . 'view/predlozak/izgledPromijeni.phtml' ?>
                 </a>
-                <a href="#">
+                <a href="<?=APP::config('url') ?>clanudruge/brisanje?sifra=<?=$clan->sifra?>">
                 <?php include BP . 'view/predlozak/izgledObrisi.phtml' ?>
                 </a>
                 </td>

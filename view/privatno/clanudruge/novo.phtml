@@ -1,0 +1,23 @@
+<form
+    action="<?=APP::config('url') ?>clanudruge/novo"
+    method="POST">
+  
+    <label>Ime
+        <input type="text" name="ime" />
+    </label>
+
+    <label>Prezime
+        <input type="text" name="prezime" />
+    </label>
+
+    <label>Oib
+        <input type="number" name="oib" />
+    </label>
+
+    <label>Broj dozvole
+        <input type="number" name="brojdozvole" />
+    </label>
+
+  <p><input type="submit" class="button expanded" value="Unesite novo"></input></p>
+    <?=$poruka ?>
+</form>
