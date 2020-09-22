@@ -1,1 +1,24 @@
-Član udruge
+<?php
+
+?>
+<table class="table"> 
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Oib</th>
+            <th>Broj dozvole</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($clanovi as $clan): ?>
+            <tr>
+                <td><?=$clan->ime?></td>
+                <td><?=$clan->prezime?></td>
+                <td><?=$clan->oib?></td>
+                <td><?=$clan->brojdozvole?></td>
+        </tr>
+
+        <?php endforeach; ?>
+    </tbody>
+</table>
