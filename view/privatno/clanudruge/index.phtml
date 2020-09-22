@@ -1,6 +1,11 @@
 <?php
 
 ?>
+
+<a class="button expanded success" href="#">
+    <?php include BP . 'view/predlozak/izgledDodajnovi.phtml' ?>
+</a>
+
 <table class="table"> 
     <thead>
         <tr>
@@ -8,6 +13,7 @@
             <th>Prezime</th>
             <th>Oib</th>
             <th>Broj dozvole</th>
+            <th>Akcija</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +23,14 @@
                 <td><?=$clan->prezime?></td>
                 <td><?=$clan->oib?></td>
                 <td><?=$clan->brojdozvole?></td>
+                <td>
+                <a href="#">
+                     <i class="fas fa-user-edit fa-2x"></i>   
+                </a>
+                <a href="#">
+                    <i class="fas fa-user-slash" style="color: red"></i>
+                </a>
+                </td>
         </tr>
 
         <?php endforeach; ?>
