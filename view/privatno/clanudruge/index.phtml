@@ -13,7 +13,7 @@
             <th>Prezime</th>
             <th>Oib</th>
             <th>Broj dozvole</th>
-            <th>Akcija</th>
+            <th>Radnja</th>
         </tr>
     </thead>
     <tbody>
@@ -27,9 +27,12 @@
                 <a href="<?=APP::config('url') ?>clanudruge/promjena?sifra=<?=$clan->sifra?>">
                 <?php include BP . 'view/predlozak/izgledPromijeni.phtml' ?>
                 </a>
-                <a href="<?=APP::config('url') ?>clanudruge/brisanje?sifra=<?=$clan->sifra?>">
+                <?php if($clan->pecanje==0): ?>
+                <a  onclick="return confirm('Jeste li sigurni da želite obrisati?');"
+                href="<?=APP::config('url') ?>clanudruge/brisanje?sifra=<?=$clan->sifra?>">
                 <?php include BP . 'view/predlozak/izgledObrisi.phtml' ?>
                 </a>
+                <?php endif; ?>
                 </td>
         </tr>
 

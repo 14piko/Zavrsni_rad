@@ -56,7 +56,9 @@ class ClanudrugeController extends AutorizacijaController
 
         public function brisanje()
         {
-
+            
+            Clanudruge::brisanje($_GET['sifra']);
+            $this->index();
 
         }
 
