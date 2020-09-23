@@ -33,4 +33,26 @@ class Clanudruge
 
     }
 
+    public static function ucitaj($sifra)
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('
+                select * from clanudruge where sifra=:sifra;
+                
+        ');
+        $izraz->execute(['sifra'=>$sifra]);
+        return $izraz->fetch();
+
+    }
+
+    public static function promjena($clan){
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('update clanudruge set
+       ime=:ime,
+       prezime=:prezime,
+       oib=:oib,
+       brojdozvole=:brojdozvole
+       where sifra=:sifra;');
+        $izraz->execute($clan);
+    }
 }
