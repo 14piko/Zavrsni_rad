@@ -128,6 +128,11 @@ class ClanudrugeController extends AutorizacijaController
                 $this->$view('Dužina Oib-a prevelika!',$clan);
                 return false;
             }
+
+            if(strlen(trim($clan->oib))<11){
+                $this->$view('Dužina Oib-a premala!',$clan);
+                return false;
+            }
                 //na kraju uvijek vrati true
                 return true;
             }
