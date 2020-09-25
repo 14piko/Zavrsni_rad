@@ -39,7 +39,24 @@ class RibaController extends AutorizacijaController
     
 }
 
+public function promjena()
+{
+    if ($_SERVER['REQUEST_METHOD']==='GET'){
+        //kontrolirati je li došla šifra u $_GET['sifra']
+        //echo $_GET['sifra'];
+        //print_r(Riba::ucitaj($_GET['sifra']));
+        $this->promjenaView('Promjenite podatke!',
+        Riba::ucitaj($_GET['sifra']));
+        return;
+    }
 
+    $riba=(object)$_POST;
+    if(!$this->kontrolaNaziv($riba,'promjenaView')){return;};
+   
+    Riba::promjena($_POST);
+
+    $this->index();
+}
 
 
 
@@ -50,6 +67,14 @@ private function novoView($poruka,$riba)
         'ribe'=>$riba
     ]);
 }
+
+private function promjenaView($poruka,$riba)
+        {
+            $this->view->render($this->viewDir . 'promjena',[
+                'poruka'=>$poruka,
+                'ribe'=> $riba
+            ]);
+        }
 
 private function kontrolaNaziv($riba,$view)
         {

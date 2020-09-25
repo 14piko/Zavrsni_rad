@@ -123,24 +123,38 @@ class ClanudrugeController extends AutorizacijaController
 
         private function kontrolaOib($clan,$view)
         {
-            if(strlen(trim($clan->oib))===0){
-                $this->$view('Obavezan unos Oib-a!',$clan);
+            $oib=$clan->oib;
+            if ( strlen($oib) != 11 ) {
+                $this->$view('OIB mora imati 11 znamenki!',$clan);
                 return false;
             }
-            
-            if(strlen(trim($clan->oib))>11){
-                $this->$view('Dužina Oib-a prevelika!',$clan);
-                return false;
+                if ( !is_numeric($oib) ) {
+                    $this->$view('OIB ne smije sadržavati druge znakove osim brojeva!',$clan);
+                    return false;
             }
-
-            if(strlen(trim($clan->oib))<11){
-                $this->$view('Dužina Oib-a premala!',$clan);
-                return false;
+                
+                    
+                    $a = 10;
+                    
+                    for ($i = 0; $i < 10; $i++) {
+                        
+                        $a = $a + intval(substr($oib, $i, 1), 10);
+                        $a = $a % 10;
+                        
+                        if ( $a == 0 ) { $a = 10; }
+                        
+                        $a *= 2;
+                        $a = $a % 11;
+                        
+                    }
+                    
+                    $kontrolni = 11 - $a;
+                    
+                    if ( $kontrolni == 10 ) { $kontrolni = 0; }
+                    $rezultat = $kontrolni == intval(substr($oib, 10, 1), 10);
+                    if(!$rezultat){
+                        $this->$view('OIB neispravan!',$clan);
+                    }
+                    return $rezultat;
             }
-                //na kraju uvijek vrati true
-                return true;
-            }
-
-
-
         }
