@@ -59,10 +59,14 @@ class ClanudrugeController extends AutorizacijaController
             Clanudruge::promjena($_POST);
 
             $this->index();
-            
-
         }
 
+
+
+
+
+
+        
         public function brisanje()
         {
             
