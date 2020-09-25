@@ -18,4 +18,12 @@ class Riba
         return $izraz->fetchAll();
 
     }
+
+
+    public static function dodajNovi($riba){
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('insert into riba (naziv,pocetaklovostaja,krajlovostaja,opis) values (:naziv,:pocetaklovostaja,:krajlovostaja,:opis);');
+        $izraz->execute($riba);
+
+    }
 }
