@@ -58,6 +58,14 @@ public function promjena()
     $this->index();
 }
 
+public function brisanje()
+{
+    
+    Riba::brisanje($_GET['sifra']);
+    $this->index();
+
+}
+
 
 
 private function novoView($poruka,$riba)

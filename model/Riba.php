@@ -57,6 +57,13 @@ class Riba
 
     }
 
+    public static function brisanje($sifra){
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('delete from riba where sifra=:sifra;');
+        $izraz->execute(['sifra'=>$sifra]);
+
+    }
+
 }
 
 
