@@ -72,7 +72,10 @@ insert into rijeka (naziv,duzina) values
 
 insert into riba (naziv,pocetaklovostaja,krajlovostaja,opis) values
 ('Šaran','2020-05-01','2020-05-31','Krupna ljuska,brkovi,žut trbuh'),
-('Smuđ','2020-05-01','2020-05-31','Sitna ljuska,oštri zubi,žut trbuh');
+('Smuđ','2020-05-01','2020-05-31','Sitna ljuska,oštri zubi,žut trbuh'),
+('Štuka','2020-05-01','2020-05-31','Sitna ljuska,oštri zubi,žut trbuh'),
+('Som','2020-05-01','2020-05-31','Sitna ljuska,oštri zubi,žut trbuh');
+
 
 insert into pecanje (datum,clanudruge,riba,kolicina,tezina,rijeka) values
 ('2020-06-01',(1),(1),'3',2.55+3.00+3.40,(1)),

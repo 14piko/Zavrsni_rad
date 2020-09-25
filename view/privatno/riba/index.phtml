@@ -1,3 +1,32 @@
-<pre>
-<?php print_r($ribe);?>
-</pre>
+<a class="button expanded success" 
+href="<?=APP::config('url') ?>riba/novo">
+    <?php include BP . 'view/predlozak/izgledDodajnovi.phtml' ?>
+</a>
+
+<div class="grid-x grid-margin-x">
+    <?php foreach($ribe as $riba): ?>
+    <div class="large-3 medium-6 cell" style="text-align: center">
+        <div class="callout" style="min-height: 520px">
+             <h1 style="font-size: 1.5em"><?=$riba->naziv?></h1>
+             <hr />
+             <img src="<?=APP::config('url') ?>public/img/nepoznatariba.png" alt="<?=$riba->naziv?> ">
+             <hr />
+        Početaj lovostaja: <?=$riba->pocetaklovostaja?><br />
+        Kraj lovostaja: <?=$riba->krajlovostaja?><br />
+        Opis: <?=$riba->opis?><br />
+        <hr />
+        <a href="<?=APP::config('url') ?>riba/promjena?sifra=<?=$riba->sifra?>">
+                <?php include BP . 'view/predlozak/izgledPromijeni.phtml' ?>
+                </a>
+                <?php if($riba->pecanje==0): ?>
+                <a  onclick="return confirm('Jeste li sigurni da želite obrisati?');"
+                href="<?=APP::config('url') ?>riba/brisanje?sifra=<?=$riba->sifra?>">
+                <?php include BP . 'view/predlozak/izgledObrisi.phtml' ?>
+                </a>
+                <?php endif; ?>
+
+        </div>
+    </div>
+
+    <?php endforeach; ?>
+</div>

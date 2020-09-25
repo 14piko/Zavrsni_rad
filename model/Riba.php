@@ -7,7 +7,11 @@ class Riba
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
                 
-        select * from riba;
+        select a.sifra, a.naziv, a.pocetaklovostaja, a.krajlovostaja, 
+        a.opis, count(b.sifra) as pecanje
+        from riba a left join pecanje b on
+        a.sifra=b.riba group by a.sifra, a.naziv, 
+        a.pocetaklovostaja, a.krajlovostaja, a.opis;
                 
         ');
         $izraz->execute();
