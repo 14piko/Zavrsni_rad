@@ -3,21 +3,26 @@
 class Clanudruge
 {
 
-    public static function ucitajSve($stranica)
+    public static function ucitajSve($stranica,$uvjet)
     {
-
-        $od = $stranica * 12 - 12;
+        $rps=APP::config('rezultataPoStranici');
+        $od = $stranica * $rps - $rps;
 
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
                 select a.sifra, a.ime, a.prezime, a.oib, 
                 a.brojdozvole, count(b.sifra) as pecanje
                 from clanudruge a left join pecanje b on
-                a.sifra=b.clanudruge group by a.sifra, a.ime, 
-                a.prezime, a.oib, a.brojdozvole limit :od,12;
+                a.sifra=b.clanudruge
+                where concat(a.ime, \' \', a.prezime, \' \',
+                ifnull(a.oib,\'\')) like :uvjet
+                group by a.sifra, a.ime, 
+                a.prezime, a.oib, a.brojdozvole limit :od,:rps;
                 
         ');
+        $izraz->bindParam('uvjet',$uvjet);
         $izraz->bindValue('od',$od,PDO::PARAM_INT);
+        $izraz->bindValue('rps',$rps,PDO::PARAM_INT);
         $izraz->execute();
         return $izraz->fetchAll();
 
@@ -37,10 +42,12 @@ class Clanudruge
 
     }
 
-    public static function ukupnoStranica(){
+    public static function ukupnoStranica($uvjet){
         $veza = DB::getInstanca();
-        $izraz = $veza->prepare('select count(sifra) from clanudruge;');
-        $izraz->execute();
+        $izraz = $veza->prepare('select count(a.sifra) from clanudruge a left join pecanje b on a.sifra=b.clanudruge 
+        where concat(a.ime, \' \', a.prezime, \' \',
+        ifnull(a.oib,\'\')) like :uvjet;');
+        $izraz->execute(['uvjet'=>$uvjet]);
         return $izraz->fetchColumn();
 
     }

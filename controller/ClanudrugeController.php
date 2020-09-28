@@ -10,6 +10,15 @@ class ClanudrugeController extends AutorizacijaController
 
     public function index()
     {
+        if(isset($_GET['uvjet'])){
+            $uvjet='%' . $_GET['uvjet'] . '%';
+            $uvjetView=$_GET['uvjet'];
+        }else{
+            $uvjet='%';
+            $uvjetView='';
+        }
+
+
         if(isset($_GET['stranica'])){
             $stranica=$_GET['stranica'];
         }else{
@@ -22,8 +31,8 @@ class ClanudrugeController extends AutorizacijaController
             $prethodna=$stranica-1;
         }
 
-        $brojPolaznika=Clanudruge::ukupnoStranica();
-        $ukupnoStranica=ceil($brojPolaznika/12);
+        $brojPolaznika=Clanudruge::ukupnoStranica($uvjet);
+        $ukupnoStranica=ceil($brojPolaznika/APP::config('rezultataPoStranici'));
 
 
         if($stranica==$ukupnoStranica){
@@ -34,10 +43,12 @@ class ClanudrugeController extends AutorizacijaController
 
 
         $this->view->render($this->viewDir . 'index',[
-            'clanovi'=>Clanudruge::ucitajSve($stranica),
+            'clanovi'=>Clanudruge::ucitajSve($stranica,$uvjet),
             'trenutna'=>$stranica,
             'prethodna'=>$prethodna,
-            'slijedeca'=>$slijedeca
+            'slijedeca'=>$slijedeca,
+            'uvjet'=>$uvjetView,
+            'ukupnoStranica'=>$ukupnoStranica
 
         ]);
     }

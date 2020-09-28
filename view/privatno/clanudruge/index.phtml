@@ -5,11 +5,18 @@
 <a class="button expanded success" href="<?=APP::config('url') ?>clanudruge/novo">
     <?php include BP . 'view/predlozak/izgledDodajnovi.phtml' ?>
 </a>
+
+<form action="<?=APP::config('url') ?>clanudruge/index" method="get">
+<input type="text" name="uvjet" value="<?=$uvjet?>" 
+placeholder="Unesite dio imena,prezimena ili OIB-a">
+</form>
+
+
 <nav aria-label="Pagination">
   <ul class="pagination text-center">
-    <li class="pagination-previous"><a href="?stranica=<?=$prethodna?>" aria-label="Previous page">Prethodna stanica</a></li>
-    <li class="current"><span class="show-for-sr">Vi ste na</span><?=$trenutna?></li>
-    <li class="pagination-next"><a href="?stranica=<?=$slijedeca?>" aria-label="Next page">Slijedeća stranica</a></li>
+    <li class="pagination-previous"><a href="?stranica=<?=$prethodna?>&uvjet=<?=$uvjet?>" aria-label="Previous page">Prethodna stanica</a></li>
+    <li class="current"><span class="show-for-sr">Vi ste na</span><?=$trenutna?>/<?=$ukupnoStranica?></li>
+    <li class="pagination-next"><a href="?stranica=<?=$slijedeca?>&uvjet=<?=$uvjet?>" aria-label="Next page">Slijedeća stranica</a></li>
   </ul>
 </nav>
 <div style='overflow-x:auto'>
@@ -49,8 +56,8 @@
 </div>
 <nav aria-label="Pagination">
   <ul class="pagination text-center">
-    <li class="pagination-previous"><a href="?stranica=<?=$prethodna?>" aria-label="Previous page">Prethodna </a></li>
-    <li class="current"><span class="show-for-sr">Vi ste na</span><?=$trenutna?></li>
-    <li class="pagination-next"><a href="?stranica=<?=$slijedeca?>" aria-label="Next page">Slijedeća </a></li>
+    <li class="pagination-previous"><a href="?stranica=<?=$prethodna?>&uvjet=<?=$uvjet?>" aria-label="Previous page">Prethodna </a></li>
+    <li class="current"><span class="show-for-sr">Vi ste na</span><?=$trenutna?>/<?=$ukupnoStranica?></li>
+    <li class="pagination-next"><a href="?stranica=<?=$slijedeca?>&uvjet=<?=$uvjet?>" aria-label="Next page">Slijedeća </a></li>
   </ul>
 </nav>

@@ -22,5 +22,6 @@ return [
     'dev' => $dev,
     'nazivAPP' => 'Ribička udruga',
     'url' => 'http://polaznik01.edunova.hr/',
-    'baza' => $baza
+    'baza' => $baza,
+    'rezultataPoStranici' =>12
 ];
