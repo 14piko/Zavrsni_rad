@@ -10,8 +10,35 @@ class ClanudrugeController extends AutorizacijaController
 
     public function index()
     {
+        if(isset($_GET['stranica'])){
+            $stranica=$_GET['stranica'];
+        }else{
+            $stranica=1;
+        }
+
+        if($stranica==1){
+            $prethodna=1;
+        }else{
+            $prethodna=$stranica-1;
+        }
+
+        $brojPolaznika=Clanudruge::ukupnoStranica();
+        $ukupnoStranica=ceil($brojPolaznika/12);
+
+
+        if($stranica==$ukupnoStranica){
+            $slijedeca=$ukupnoStranica;
+        }else{
+            $slijedeca=$stranica+1;
+        }
+
+
         $this->view->render($this->viewDir . 'index',[
-            'clanovi'=>Clanudruge::ucitajSve()
+            'clanovi'=>Clanudruge::ucitajSve($stranica),
+            'trenutna'=>$stranica,
+            'prethodna'=>$prethodna,
+            'slijedeca'=>$slijedeca
+
         ]);
     }
 

@@ -5,6 +5,13 @@
 <a class="button expanded success" href="<?=APP::config('url') ?>clanudruge/novo">
     <?php include BP . 'view/predlozak/izgledDodajnovi.phtml' ?>
 </a>
+<nav aria-label="Pagination">
+  <ul class="pagination text-center">
+    <li class="pagination-previous"><a href="?stranica=<?=$prethodna?>" aria-label="Previous page">Prethodna stanica</a></li>
+    <li class="current"><span class="show-for-sr">Vi ste na</span><?=$trenutna?></li>
+    <li class="pagination-next"><a href="?stranica=<?=$slijedeca?>" aria-label="Next page">Slijedeća stranica</a></li>
+  </ul>
+</nav>
 <div style='overflow-x:auto'>
 <table cellpadding=5 border=1 cellspacing=0>
     <thead>
@@ -40,3 +47,10 @@
     </tbody>
 </table>
 </div>
+<nav aria-label="Pagination">
+  <ul class="pagination text-center">
+    <li class="pagination-previous"><a href="?stranica=<?=$prethodna?>" aria-label="Previous page">Prethodna </a></li>
+    <li class="current"><span class="show-for-sr">Vi ste na</span><?=$trenutna?></li>
+    <li class="pagination-next"><a href="?stranica=<?=$slijedeca?>" aria-label="Next page">Slijedeća </a></li>
+  </ul>
+</nav>

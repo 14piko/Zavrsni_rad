@@ -3,17 +3,21 @@
 class Clanudruge
 {
 
-    public static function ucitajSve()
+    public static function ucitajSve($stranica)
     {
+
+        $od = $stranica * 12 - 12;
+
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
                 select a.sifra, a.ime, a.prezime, a.oib, 
                 a.brojdozvole, count(b.sifra) as pecanje
                 from clanudruge a left join pecanje b on
                 a.sifra=b.clanudruge group by a.sifra, a.ime, 
-                a.prezime, a.oib, a.brojdozvole;
+                a.prezime, a.oib, a.brojdozvole limit :od,12;
                 
         ');
+        $izraz->bindValue('od',$od,PDO::PARAM_INT);
         $izraz->execute();
         return $izraz->fetchAll();
 
@@ -30,6 +34,14 @@ class Clanudruge
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('delete from clanudruge where sifra=:sifra;');
         $izraz->execute(['sifra'=>$sifra]);
+
+    }
+
+    public static function ukupnoStranica(){
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('select count(sifra) from clanudruge;');
+        $izraz->execute();
+        return $izraz->fetchColumn();
 
     }
 
