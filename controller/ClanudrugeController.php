@@ -72,6 +72,7 @@ class ClanudrugeController extends AutorizacijaController
             if(!$this->kontrolaPrezime($clan,'novoView')){return;};
             if(!$this->kontrolaOib($clan,'novoView')){return;};
             Clanudruge::dodajNovi($_POST);
+            $_GET['uvjet']=$clan->prezime;
             //ovo ispod unese i prebaci te na popis svih članova
             $this->index();
 
@@ -84,8 +85,10 @@ class ClanudrugeController extends AutorizacijaController
                 //kontrolirati je li došla šifra u $_GET['sifra']
                 //echo $_GET['sifra'];
                 //print_r(Clanudruge::ucitaj($_GET['sifra']));
+                $_SESSION['stranicaClan']=$_GET['stranica'];
                 $this->promjenaView('Promjenite podatke!',
                 Clanudruge::ucitaj($_GET['sifra']));
+                
                 return;
             }
 
@@ -95,6 +98,7 @@ class ClanudrugeController extends AutorizacijaController
             if(!$this->kontrolaOib($clan,'promjenaView')){return;};
 
             Clanudruge::promjena($_POST);
+            $_GET['stranica']=$_SESSION['stranicaClan'];
 
             $this->index();
         }
@@ -125,7 +129,8 @@ class ClanudrugeController extends AutorizacijaController
         {
             $this->view->render($this->viewDir . 'promjena',[
                 'poruka'=>$poruka,
-                'clanudruge'=> $clan
+                'clanudruge'=> $clan,
+                'trenutna'=>$_SESSION['stranicaClan']
             ]);
         }
 

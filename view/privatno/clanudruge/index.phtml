@@ -38,7 +38,7 @@ placeholder="Unesite dio imena,prezimena ili OIB-a">
                 <td><?=$clan->oib?></td>
                 <td><?=$clan->brojdozvole?></td>
                 <td>
-                <a href="<?=APP::config('url') ?>clanudruge/promjena?sifra=<?=$clan->sifra?>">
+                <a href="<?=APP::config('url') ?>clanudruge/promjena?sifra=<?=$clan->sifra?>&stranica=<?=$trenutna?>">
                 <?php include BP . 'view/predlozak/izgledPromijeni.phtml' ?>
                 </a>
                 <?php if($clan->pecanje==0): ?>
