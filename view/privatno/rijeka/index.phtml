@@ -1,10 +1,9 @@
-
-
 <a class="button expanded success" href="<?=APP::config('url') ?>rijeka/novo">
 <?php include BP . 'view/predlozak/izgledDodajNovi.phtml' ?>
 </a>
 
-<table class="table">
+<div style='overflow-x:auto'>
+<table cellpadding=5 border=1 cellspacing=0>
     <thead>
         <tr>
             <th>Naziv</th>
@@ -32,3 +31,4 @@
         <?php endforeach; ?>
     </tbody>
 </table> 
+</div>
