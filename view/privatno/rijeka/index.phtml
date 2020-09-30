@@ -1,1 +1,33 @@
-Rijeka
+
+
+<a class="button expanded success" href="<?=APP::config('url') ?>rijeka/novo">
+<?php include BP . 'view/predlozak/izgledDodajNovi.phtml' ?>
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Dužina</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($rijeke as $rijeka): ?>
+            <tr>
+                <td><?=$rijeka->naziv?></td>
+                <td><?=$rijeka->duzina?></td>
+                <td>
+                <a href="<?=APP::config('url') ?>rijeka/promjena?sifra=<?=$rijeka->sifra?>">
+                    <i class="fas fa-edit fa-2x"></i>
+                </a>
+                <?php if ($rijeka->pecanje==0): ?>
+                    <a onclick="return confirm('Sigurno obrisati?');"
+                    href="<?=APP::config('url') ?>rijeka/brisanje?sifra=<?=$rijeka->sifra?>">
+                    <i class="far fa-trash-alt" style="color: red;"></i>
+                </a>
+                <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table> 
