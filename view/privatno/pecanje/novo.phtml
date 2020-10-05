@@ -8,11 +8,11 @@
 
     <label>Član udruge
        <select name="clanovi" id="clanovi">
-       <option <?php if($pecanje->clan==0){
+       <option <?php if($pecanje->clanovi==0){
     echo '  selected="selected"  ';
 }?> value="0">Odaberite člana</option>
        <?php foreach($clanovi as $clan) : ?>
-        <option <?php if($pecanje->clan==$clan->sifra){
+        <option <?php if($pecanje->clanovi==$clan->sifra){
             echo '  selected="selected"  ';
         }?> value="<?=$clan->sifra?>"><?=$clan->ime?> <?=$clan->prezime?></option>
          <?php endforeach; ?>
