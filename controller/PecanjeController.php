@@ -13,5 +13,36 @@ class PecanjeController extends AutorizacijaController
         $this->view->render($this->viewDir . 'index');
     }
 
+    public function promjena()
+        {
+    
+            }
+
+            
+        }
+
+
+
+
+
+
+        
+        public function brisanje()
+        {
+            
+           
+        }
+
+        private function novoView($poruka,$clan)
+        {
+           
+        }
+
+        private function promjenaView($poruka,$clan)
+        {
+           
+        }
+
+    }
 
 }
