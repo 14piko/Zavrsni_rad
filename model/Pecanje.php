@@ -29,7 +29,9 @@ class Pecanje
 
     public static function brisanje($sifra)
     {
-        
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('delete from pecanje where sifra=:sifra;');
+        $izraz->execute(['sifra'=>$sifra]);
     }
 
     public static function ukupnoStranica($uvjet)

@@ -32,8 +32,8 @@ class PecanjeController extends AutorizacijaController
         
         public function brisanje()
         {
-            
-           
+            Pecanje::brisanje($_GET['sifra']);
+            $this->index();
         }
 
         private function novoView($poruka,$clan)
