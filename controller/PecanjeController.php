@@ -9,17 +9,20 @@ class PecanjeController extends AutorizacijaController
      . DIRECTORY_SEPARATOR;
 
     public function index()
-    {
-        $this->view->render($this->viewDir . 'index');
+    {  
+        $pecanja=Pecanje::ucitajSve();
+        $this->view->render($this->viewDir . 'index' ,[
+            'pecanja'=>$pecanja
+    ]);
     }
 
     public function promjena()
         {
     
-            }
+        }
 
             
-        }
+        
 
 
 
@@ -45,4 +48,3 @@ class PecanjeController extends AutorizacijaController
 
     }
 
-}

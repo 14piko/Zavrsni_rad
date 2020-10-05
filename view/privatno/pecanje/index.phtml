@@ -1,1 +1,43 @@
-Pecanje
+<a class="button expanded success" href="<?=APP::config('url') ?>pecanje/novo">
+<i class="fas fa-user-plus"></i> Dodaj novi ulov
+</a>
+
+<div style='overflow-x:auto'>
+<table cellpadding=5 border=1 cellspacing=0>
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Član udruge</th>
+            <th>Riba</th>
+            <th>Količina</th>
+            <th>Težina</th>
+            <th>Rijeka</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        <?php foreach($pecanja as $pecanje): ?>
+            <tr>
+                <td><?=$pecanje->datum?></td>
+                <td><?=$pecanje->clanudruge?></td>
+                <td><?=$pecanje->riba?></td>
+                <td><?=$pecanje->kolicina?></td>
+                <td><?=$pecanje->tezina?></td>
+                <td><?=$pecanje->rijeka?></td>
+                <td>
+                <a href="<?=APP::config('url') ?>pecanje/promjena?sifra=<?=$pecanje->sifra?>">
+                <?php include BP . 'view/predlozak/izgledPromijeni.phtml' ?>
+                </a>
+                <?php if ($pecanje->clanovi==0): ?>
+                <a  onclick="return confirm('Jeste li sigurni da želite obrisati?');"
+                href="<?=APP::config('url') ?>pecanje/brisanje?sifra=<?=$pecanje->sifra?>">
+                <?php include BP . 'view/predlozak/izgledObrisi.phtml' ?>
+                </a>
+                <?php endif; ?>
+                </td>
+        </tr>
+
+        <?php endforeach; ?>
+    </tbody>
+</table>
+</div>
