@@ -10,9 +10,8 @@ class PecanjeController extends AutorizacijaController
 
     public function index()
     {  
-        $pecanja=Pecanje::ucitajSve();
         $this->view->render($this->viewDir . 'index' ,[
-            'pecanja'=>$pecanja
+            'entiteti'=>Pecanje::ucitajSve()
     ]);
     }
 
@@ -24,20 +23,20 @@ class PecanjeController extends AutorizacijaController
     public function novo()
     {
         if ($_SERVER['REQUEST_METHOD']==='GET'){
-            $pecanje=new stdClass();
-            $pecanje->datum='';
-            $pecanje->clanovi=0;
-            $pecanje->riba=0;
-            $pecanje->kolicina='';
-            $pecanje->tezina='';
-            $pecanje->rijeka=0;
-            $this->novoView('Unesite tražene podatke',$pecanje);
+            $entitet=new stdClass();
+            $entitet->datum='';
+            $entitet->clanudruge='0';
+            $entitet->riba=0;
+            $entitet->kolicina='';
+            $entitet->tezina='';
+            $entitet->rijeka=0;
+            $this->novoView('Unesite tražene podatke',$entitet);
             return;
         }
-        $pecanje=(object)$_POST;
-        if(!$this->kontrolaClan($pecanje,'novoView')){return;};
-        if(!$this->kontrolaRiba($pecanje,'novoView')){return;};
-        if(!$this->kontrolaRijeka($pecanje,'novoView')){return;};
+        $entitet=(object)$_POST;
+        if(!$this->kontrolaClan($entitet,'novoView')){return;};
+        if(!$this->kontrolaRiba($entitet,'novoView')){return;};
+        if(!$this->kontrolaRijeka($entitet,'novoView')){return;};
         Pecanje::dodajNovi($_POST);
         $this->index();
     }
@@ -56,33 +55,34 @@ class PecanjeController extends AutorizacijaController
             $this->index();
         }
 
-        private function novoView($poruka,$pecanje)
+        private function novoView($poruka,$entitet)
         {
            $this->view->render($this->viewDir . 'novo',[
                'poruka'=>$poruka,
-               'pecanje'=>$pecanje,
+               'entitet'=>$entitet,
                'ribe'=>Riba::ucitajSve(),
                'rijeke'=>Rijeka::ucitajSve(),
-               'clanovi'=>Clanudruge::ucitajSve(1,'%')
+               'clanudruge'=>Clanudruge::ucitajSve(1,'%'),
+               
               
            ]);
         }
 
-        private function promjenaView($poruka,$pecanje)
+        private function promjenaView($poruka,$entitet)
         {
             $this->view->render($this->viewDir . 'promjena',[
                 'poruka'=>$poruka,
-                'pecanje'=>$pecanje,
+                'entitet'=>$entitet,
                 'ribe'=>Riba::ucitajSve(),
                'rijeke'=>Rijeka::ucitajSve(),
-               'clanovi'=>Clanudruge::ucitajSve(1,'%')
+               'clanudruge'=>Clanudruge::ucitajSve(1,'%'),
             ]);
         }
     
-        private function kontrolaClan($pecanje,$view)
+        private function kontrolaClan($entitet,$view)
         {
-            if($pecanje->clanovi==0){
-                $this->$view('Obavezan odabir člana!',$pecanje);
+            if($entitet->clanudruge==0){
+                $this->$view('Obavezan odabir člana!',$entitet);
                 return false;
             }
             
@@ -91,10 +91,10 @@ class PecanjeController extends AutorizacijaController
             }
 
 
-    private function kontrolaRiba($pecanje,$view)
+    private function kontrolaRiba($entitet,$view)
         {
-            if($pecanje->riba==0){
-            $this->$view('Obavezan odabir ribe!',$pecanje);
+            if($entitet->riba==0){
+            $this->$view('Obavezan odabir ribe!',$entitet);
             return false;
             }
                 
@@ -102,10 +102,10 @@ class PecanjeController extends AutorizacijaController
             return true;
         }
 
-    private function kontrolaRijeka($pecanje,$view)
+    private function kontrolaRijeka($entitet,$view)
         {
-            if($pecanje->rijeka==0){
-            $this->$view('Obavezan odabir rijeke!',$pecanje);
+            if($entitet->rijeka==0){
+            $this->$view('Obavezan odabir rijeke!',$entitet);
             return false;
             }
                     

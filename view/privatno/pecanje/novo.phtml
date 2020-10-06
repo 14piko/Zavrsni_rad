@@ -3,16 +3,16 @@
     method="POST">
   
     <label>Datum
-        <input type="date" name="datum" value="<?=$pecanje->datum?>"/>
+        <input type="date" name="datum" value="<?=$entitet->datum?>"/>
     </label>
 
     <label>Član udruge
-       <select name="clanovi" id="clanovi">
-       <option <?php if($pecanje->clanovi==0){
+       <select name="clanudruge" id="clanudruge">
+       <option <?php if($entitet->clanudruge==0){
     echo '  selected="selected"  ';
 }?> value="0">Odaberite člana</option>
-       <?php foreach($clanovi as $clan) : ?>
-        <option <?php if($pecanje->clanovi==$clan->sifra){
+       <?php foreach($clanudruge as $clan) : ?>
+        <option <?php if($entitet->clanudruge==$clan->sifra){
             echo '  selected="selected"  ';
         }?> value="<?=$clan->sifra?>"><?=$clan->ime?> <?=$clan->prezime?></option>
          <?php endforeach; ?>
@@ -21,11 +21,11 @@
 
     <label>Riba
        <select name="riba" id="riba">
-       <option <?php if($pecanje->riba==0){
+       <option <?php if($entitet->riba==0){
     echo '  selected="selected"  ';
 }?> value="0">Odaberite ribu</option>
        <?php foreach($ribe as $riba) : ?>
-        <option <?php if($pecanje->riba==$riba->sifra){
+        <option <?php if($entitet->riba==$riba->sifra){
             echo '  selected="selected"  ';
         }?> value="<?=$riba->sifra?>"><?=$riba->naziv?></option>
 
@@ -34,20 +34,20 @@
     </label>
 
     <label>Količina
-        <input type="text" name="kolicina" value="<?=$pecanje->kolicina?>"/>
+        <input type="text" name="kolicina" value="<?=$entitet->kolicina?>"/>
     </label>
 
     <label>Težina
-        <input type="text" name="tezina" value="<?=$pecanje->tezina?>"/>
+        <input type="text" name="tezina" value="<?=$entitet->tezina?>"/>
     </label>
 
     <label>Rijeka
        <select name="rijeka" id="rijeka">
-       <option <?php if($pecanje->rijeka==0){
+       <option <?php if($entitet->rijeka==0){
     echo '  selected="selected"  ';
 }?> value="0">Odaberite rijeku</option>
        <?php foreach($rijeke as $rijeka) : ?>
-        <option <?php if($pecanje->rijeka==$rijeka->sifra){
+        <option <?php if($entitet->rijeka==$rijeka->sifra){
             echo '  selected="selected"  ';
         }?> value="<?=$rijeka->sifra?>"><?=$rijeka->naziv?></option>
 

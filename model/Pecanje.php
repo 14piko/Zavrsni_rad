@@ -8,24 +8,41 @@ class Pecanje
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('select a.sifra,c.naziv as riba ,d.naziv as rijeka,
         concat(b.ime,\' \',b.prezime) as clanudruge,
-        a.datum,a.kolicina,a.tezina,count(a.clanudruge) as clanovi from pecanje a
+        a.datum,a.kolicina,a.tezina,count(b.sifra) as clanovi from pecanje a
         inner join clanudruge b on a.clanudruge=b.sifra
-        left join riba c on a.riba=c.sifra 
-        left join rijeka d on a.rijeka=d.sifra
+        inner join riba c on a.riba=c.sifra 
+        inner join rijeka d on a.rijeka=d.sifra
         group by a.sifra,c.naziv ,d.naziv,
         concat(b.ime,\' \',b.prezime),
         a.datum,a.kolicina,a.tezina;');
         $izraz->execute();
+
         return $izraz->fetchAll();
-       
-
     }
 
-    public static function dodajNovi($clan)
-    {
+
+    public static function dodajNovi($entitet)
+    {   
         
-
+         
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('insert into pecanje
+        (datum,
+        clanudruge,
+        riba,
+        kolicina,
+        tezina,
+        rijeka)
+        values 
+        (:datum,
+        :clanudruge,
+        :riba,
+        :kolicina,
+        :tezina,
+        :rijeka);');
+        $izraz->execute($entitet);
     }
+
 
     public static function brisanje($sifra)
     {
