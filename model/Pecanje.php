@@ -20,11 +20,21 @@ class Pecanje
         return $izraz->fetchAll();
     }
 
+    public static function ucitaj($sifra)
+    {
+        {
+            $veza = DB::getInstanca();
+            $izraz = $veza->prepare('select * from pecanje
+            where sifra=:sifra;');
+            $izraz->execute(['sifra'=>$sifra]);
+            return $izraz->fetch();
+        }
+    }
+
 
     public static function dodajNovi($entitet)
     {   
         
-         
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into pecanje
         (datum,
@@ -43,6 +53,22 @@ class Pecanje
         $izraz->execute($entitet);
     }
 
+     public static function promjena($entitet)
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('update pecanje set 
+        datum =:datum,
+        clanudruge =:clanudruge,
+        riba =:riba,
+        kolicina =:kolicina,
+        tezina =:tezina,
+        rijeka =:rijeka
+        where sifra =:sifra;');
+        
+        $izraz->execute($entitet);
+        
+    }
+
 
     public static function brisanje($sifra)
     {
@@ -51,20 +77,5 @@ class Pecanje
         $izraz->execute(['sifra'=>$sifra]);
     }
 
-    public static function ukupnoStranica($uvjet)
-    {
-      
-
-    }
-
-    public static function ucitaj($sifra)
-    {
-     
-    }
-
-    public static function promjena($clan)
-    {
-      
-    }
 
 }

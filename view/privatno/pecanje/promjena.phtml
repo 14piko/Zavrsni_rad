@@ -1,5 +1,5 @@
 <form
-    action="<?=APP::config('url') ?>pecanje/novo"
+    action="<?=APP::config('url') ?>pecanje/promjena"
     method="POST">
   
     <label>Datum
@@ -34,11 +34,11 @@
     </label>
 
     <label>Količina
-        <input type="text" name="kolicina" value="<?=$entitet->kolicina?>"/>
+        <input type="text" name="kolicina" id="kolicina" value="<?=$entitet->kolicina?>"/>
     </label>
 
     <label>Težina
-        <input type="text" name="tezina" value="<?=$entitet->tezina?>"/>
+        <input type="text" name="tezina" id="tezina" value="<?=$entitet->tezina?>"/>
     </label>
 
     <label>Rijeka
@@ -55,6 +55,9 @@
        </select>
     </label>
 
+
+    
+    <input type="hidden" name="sifra" value="<?=$entitet->sifra?>">
     <p>
         <?=$poruka ?>
     </p>
@@ -62,7 +65,7 @@
     <div class="grid-x grid-padding-x">
         <div class="large-6 small-12 cell">
         <input type="submit" class="button expanded" 
-                value="Unesite novi ulov!"></input>
+                value="Promijenite ulov!"></input>
         </div>
         <div class="large-6 small-12 cell">
         <a class="button expanded alert" href="<?=APP::config('url') ?>pecanje/index">

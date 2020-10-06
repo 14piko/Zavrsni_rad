@@ -17,6 +17,21 @@ class PecanjeController extends AutorizacijaController
 
     public function promjena()
         {
+           
+            if ($_SERVER['REQUEST_METHOD']==='GET'){
+                $this->promjenaView('Promjenite željene podatke',
+                Pecanje::ucitaj($_GET['sifra']));
+                return;
+            }
+    
+            $entitet=(object)$_POST;
+            if(!$this->kontrolaClan($entitet,'promjenaView')){return;};
+            if(!$this->kontrolaRiba($entitet,'promjenaView')){return;};
+            if(!$this->kontrolaRijeka($entitet,'promjenaView')){return;};
+            
+            Pecanje::promjena($_POST);
+    
+            $this->index();
     
         }
 
@@ -25,7 +40,7 @@ class PecanjeController extends AutorizacijaController
         if ($_SERVER['REQUEST_METHOD']==='GET'){
             $entitet=new stdClass();
             $entitet->datum='';
-            $entitet->clanudruge='0';
+            $entitet->clanudruge=0;
             $entitet->riba=0;
             $entitet->kolicina='';
             $entitet->tezina='';
