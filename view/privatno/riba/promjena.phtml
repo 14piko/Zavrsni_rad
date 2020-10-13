@@ -1,6 +1,7 @@
 <form
     action="<?=APP::config('url') ?>riba/promjena"
-    method="POST">
+    method="POST"
+    enctype="multipart/form-data">
 
     <fieldset class = "fieldset">
     <legend>Promjena osnovnih podataka o ribi</legend>
@@ -22,12 +23,17 @@
         <input type="date" name="krajlovostaja" value="<?=$ribe->krajlovostaja?>" />
         </label>
     </div>  
+    <div class="large-6 small-12 cell">
+        <label>Slika
+        <input type="file" name="slika" />
+        </label>
+    </div>  
         <div class="large-6 small-12 cell">
         <label>Opis
         <textarea name="opis" cols="30"
         rows="5"><?=$ribe->opis?></textarea>
         </label>
-    </div>    
+    </div>     
 </div>   
 
     <input type="hidden" name="sifra" value="<?=$ribe->sifra?>">

@@ -9,7 +9,14 @@ href="<?=APP::config('url') ?>riba/novo">
         <div class="callout" style="min-height: 520px">
              <h1 style="font-size: 1.5em"><?=$riba->naziv?></h1>
              <hr />
+             <?php if(file_exists(BP. 'public' . DIRECTORY_SEPARATOR 
+            . 'img' . DIRECTORY_SEPARATOR . 'riba'
+            . DIRECTORY_SEPARATOR . $riba->sifra . '.jpg')):?>
+            
+            <img src="<?=APP::config('url') ?>public/img/riba/<?=$riba->sifra?>.jpg" alt="<?=$riba->naziv?> ">  
+             <?php else: ?>
              <img src="<?=APP::config('url') ?>public/img/nepoznatariba.png" alt="<?=$riba->naziv?> ">
+             <?php endif; ?>
              <hr />
 
 Početak lovostaja: <?=$riba->pocetaklovostaja?><br />

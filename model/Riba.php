@@ -55,6 +55,14 @@ class Riba
         where sifra=:sifra;');
         $izraz->execute($riba);
 
+        if(isset($_FILES['slika'])){
+            $putanja= BP. 'public' . DIRECTORY_SEPARATOR 
+            . 'img' . DIRECTORY_SEPARATOR . 'riba'
+            . DIRECTORY_SEPARATOR . $riba['sifra'] . '.jpg';
+            move_uploaded_file($_FILES['slika']['tmp_name'],$putanja);
+
+        }
+
     }
 
     public static function brisanje($sifra){
