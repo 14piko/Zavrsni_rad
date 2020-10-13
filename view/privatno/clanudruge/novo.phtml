@@ -1,6 +1,9 @@
 <form
     action="<?=APP::config('url') ?>clanudruge/novo"
     method="POST">
+
+    <fieldset class = "fieldset">
+    <legend>Osnovni podaci o članu</legend>
   
     <label>Ime
         <input type="text" name="ime" value="<?=$clanudruge->ime?>"/>
@@ -33,5 +36,5 @@
         </a>
         </div>
     </div>
-        
+    </fieldset>
 </form>

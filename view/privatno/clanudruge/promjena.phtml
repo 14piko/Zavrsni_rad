@@ -1,6 +1,10 @@
 <form
     action="<?=APP::config('url') ?>clanudruge/promjena"
     method="POST">
+
+    
+    <fieldset class = "fieldset">
+    <legend>Promjena osnovnih podataka o članu</legend>
   
     <label>Ime
         <input type="text" name="ime" value="<?=$clanudruge->ime?>"/>
@@ -35,5 +39,5 @@
         </a>
         </div>
     </div>
-        
+    </fieldset>    
 </form>

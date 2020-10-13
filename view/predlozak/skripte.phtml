@@ -2,3 +2,8 @@
 <script src="<?=APP::config('url') ?>public/assets/js/foundation.js"></script>
 <script src="<?=APP::config('url') ?>public/app.js"></script>
 <script src="https://kit.fontawesome.com/6d233732ea.js" crossorigin="anonymous"></script>
+<?php 
+if(isset($javascript)){
+    echo $javascript;
+}
+?>

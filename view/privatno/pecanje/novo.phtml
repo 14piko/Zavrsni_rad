@@ -1,6 +1,9 @@
 <form
     action="<?=APP::config('url') ?>pecanje/novo"
     method="POST">
+
+    <fieldset class = "fieldset">
+    <legend>Osnovni podaci o ulovu</legend>
   
     <label>Datum
         <input type="date" name="datum" id="datum" value="<?=$entitet->datum?>"/>
@@ -70,5 +73,5 @@
         </a>
         </div>
     </div>
-        
+    </fieldset>
 </form>

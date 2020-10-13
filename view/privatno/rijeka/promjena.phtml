@@ -1,6 +1,9 @@
 <form
     action="<?=APP::config('url') ?>rijeka/promjena"
     method="POST">
+
+    <fieldset class = "fieldset">
+    <legend>Promjena osnovnih podataka o rijeci</legend>
   
     <label>Naziv rijeke
         <input type="text" name="naziv" value="<?=$rijeka->naziv?>"/>
@@ -27,5 +30,5 @@
         </a>
         </div>
     </div>
-        
+    </fieldset>
 </form>

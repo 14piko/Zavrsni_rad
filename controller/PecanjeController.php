@@ -77,7 +77,7 @@ class PecanjeController extends AutorizacijaController
                'entitet'=>$entitet,
                'ribe'=>Riba::ucitajSve(),
                'rijeke'=>Rijeka::ucitajSve(),
-               'clanudruge'=>Clanudruge::ucitajSve(1,'%'),
+               'clanudruge'=>Clanudruge::ucitajSve(1,'%')
                
               
            ]);
@@ -90,7 +90,7 @@ class PecanjeController extends AutorizacijaController
                 'entitet'=>$entitet,
                 'ribe'=>Riba::ucitajSve(),
                'rijeke'=>Rijeka::ucitajSve(),
-               'clanudruge'=>Clanudruge::ucitajSve(1,'%'),
+               'clanudruge'=>Clanudruge::ucitajSve(1,'%')
             ]);
         }
     

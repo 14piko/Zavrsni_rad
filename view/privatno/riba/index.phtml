@@ -11,19 +11,22 @@ href="<?=APP::config('url') ?>riba/novo">
              <hr />
              <img src="<?=APP::config('url') ?>public/img/nepoznatariba.png" alt="<?=$riba->naziv?> ">
              <hr />
-        Početaj lovostaja: <?=$riba->pocetaklovostaja?><br />
-        Kraj lovostaja: <?=$riba->krajlovostaja?><br />
-        Opis: <?=$riba->opis?><br />
+
+Početak lovostaja: <?=$riba->pocetaklovostaja?><br />
+Kraj lovostaja: <?=$riba->krajlovostaja?><br />
+Opis: <?=$riba->opis?><br />
         <hr />
-        <a href="<?=APP::config('url') ?>riba/promjena?sifra=<?=$riba->sifra?>">
-                <?php include BP . 'view/predlozak/izgledPromijeni.phtml' ?>
-                </a>
-                <?php if($riba->pecanje==0): ?>
-                <a  onclick="return confirm('Jeste li sigurni da želite obrisati?');"
-                href="<?=APP::config('url') ?>riba/brisanje?sifra=<?=$riba->sifra?>">
-                <?php include BP . 'view/predlozak/izgledObrisi.phtml' ?>
-                </a>
-                <?php endif; ?>
+        
+<a href="<?=APP::config('url') ?>riba/promjena?sifra=<?=$riba->sifra?>">
+    <?php include BP . 'view/predlozak/izgledPromijeni.phtml' ?>
+</a>
+
+<?php if($riba->pecanje==0): ?>
+<a  onclick="return confirm('Jeste li sigurni da želite obrisati?');"
+    href="<?=APP::config('url') ?>riba/brisanje?sifra=<?=$riba->sifra?>">
+    <?php include BP . 'view/predlozak/izgledObrisi.phtml' ?>
+</a>
+<?php endif; ?>
 
         </div>
     </div>

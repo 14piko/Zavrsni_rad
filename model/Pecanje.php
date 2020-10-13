@@ -77,5 +77,15 @@ class Pecanje
         $izraz->execute(['sifra'=>$sifra]);
     }
 
+    public static function vrstaRibeUPecanjuJSON()
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('select b.naziv as name,count(a.riba) as y from pecanje a
+        left join riba b on a.riba=b.sifra
+        group by b.naziv order by 2 desc;');
+        $izraz->execute();
+        return json_encode($izraz->fetchAll(),JSON_NUMERIC_CHECK );
+    }
+
 
 }
