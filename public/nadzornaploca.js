@@ -17,6 +17,17 @@ Highcharts.chart('graf1', {
         }
     },
     plotOptions: {
+        series: {
+            cursor: 'pointer',
+            point: {
+                events: {
+                    click: function() {
+                        location.href='/riba/index'; //ovo vodi na stranicu gdje će biti prikazane slike riba i opis riba 
+                        //location.href='/riba/promjena?sifra=' + this.options.sifra; -->ovo vodi direktno na promjenu određene vrste ribe
+                    }
+                }
+            }
+        },
         pie: {
             allowPointSelect: true,
             cursor: 'pointer',
