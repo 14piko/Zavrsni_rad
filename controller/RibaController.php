@@ -11,7 +11,15 @@ class RibaController extends AutorizacijaController
     public function index()
     {
         $this->view->render($this->viewDir . 'index' , [
-            'ribe'=>Riba::ucitajSve()
+            'ribe'=>Riba::ucitajSve(),
+            'css'=>'
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+            <link rel="stylesheet" href="' . APP::config('url') . 'public/assets/css/cropper.css">',
+            'javascript'=>'
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+            <script src="' . APP::config('url') . 'public/assets/js/cropper.js"></script>
+            <script src="' . APP::config('url') . 'public/riba/index.js"></script>
+            '
         ]);
     }
 
@@ -97,8 +105,23 @@ private function kontrolaNaziv($riba,$view)
             }
                 //na kraju uvijek vrati true
                 return true;
-            }
+        }
 
+           
+public function spremisliku(){
+
+        $slika = $_POST['slika'];
+        $slika=str_replace('data:image/png;base64,','',$slika);
+        $slika=str_replace(' ','+',$slika);
+        $data=base64_decode($slika);
+        
+        file_put_contents(BP . 'public' . DIRECTORY_SEPARATOR
+        . 'img' . DIRECTORY_SEPARATOR . 
+        'riba' . DIRECTORY_SEPARATOR 
+        . $_POST['id'] . '.png', $data);
+        
+        echo "OK";
+            }
 
 
 }

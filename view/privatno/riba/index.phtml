@@ -11,11 +11,11 @@ href="<?=APP::config('url') ?>riba/novo">
              <hr />
              <?php if(file_exists(BP. 'public' . DIRECTORY_SEPARATOR 
             . 'img' . DIRECTORY_SEPARATOR . 'riba'
-            . DIRECTORY_SEPARATOR . $riba->sifra . '.jpg')):?>
+            . DIRECTORY_SEPARATOR . $riba->sifra . '.png')):?>
             
-            <img src="<?=APP::config('url') ?>public/img/riba/<?=$riba->sifra?>.jpg" alt="<?=$riba->naziv?> ">  
+            <img class="slika" id="r_<?=$riba->sifra?>" src="<?=APP::config('url') ?>public/img/riba/<?=$riba->sifra?>.jpg" alt="<?=$riba->naziv?> ">  
              <?php else: ?>
-             <img src="<?=APP::config('url') ?>public/img/nepoznatariba.png" alt="<?=$riba->naziv?> ">
+             <img class="slika" id="r_<?=$riba->sifra?>" src="<?=APP::config('url') ?>public/img/nepoznatariba.png" alt="<?=$riba->naziv?> ">
              <?php endif; ?>
              <hr />
 
@@ -39,4 +39,13 @@ Opis: <?=$riba->opis?><br />
     </div>
 
     <?php endforeach; ?>
+</div>
+
+<div class="reveal" id="slikaModal" data-reveal>
+  <img id="image" src="" alt="" />
+  <input type="file" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+  <a href="#" id="spremi">Spremi</a>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
