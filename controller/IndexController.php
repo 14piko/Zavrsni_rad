@@ -13,6 +13,12 @@ class IndexController extends Controller
         $this->view->render('oribolovu');
     }
 
+    public function era()
+    {
+        $this->view->render('era');
+    }
+
+
     public function notfound($poruka)
     {
         $this->view->render('notfound',['poruka'=>$poruka]);
