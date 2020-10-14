@@ -13,7 +13,7 @@ href="<?=APP::config('url') ?>riba/novo">
             . 'img' . DIRECTORY_SEPARATOR . 'riba'
             . DIRECTORY_SEPARATOR . $riba->sifra . '.png')):?>
             
-            <img class="slika" id="r_<?=$riba->sifra?>" src="<?=APP::config('url') ?>public/img/riba/<?=$riba->sifra?>.jpg" alt="<?=$riba->naziv?> ">  
+            <img class="slika" id="r_<?=$riba->sifra?>" src="<?=APP::config('url') ?>public/img/riba/<?=$riba->sifra?>.png" alt="<?=$riba->naziv?> ">  
              <?php else: ?>
              <img class="slika" id="r_<?=$riba->sifra?>" src="<?=APP::config('url') ?>public/img/nepoznatariba.png" alt="<?=$riba->naziv?> ">
              <?php endif; ?>
