@@ -26,4 +26,43 @@ class NadzornaplocaController extends AutorizacijaController
         ]);
     }
 
+
+    public function profilpromjena(){
+
+        if(!$_POST || !isset($_POST['lozinka']) || 
+            !isset($_POST['lozinkaponovno'])){
+            return;
+            exit;
+        }
+
+
+        if($_POST['lozinka']=='' || $_POST['lozinkaponovno']==''){
+            $this->view->render($this->viewDir . 'profil',[
+                'entitet'=>$_SESSION['autoriziran'],
+                'poruka'=>'Lozinka i lozinka ponovno moraju biti unesene!'
+            ]);
+            exit;
+        }
+
+        if($_POST['lozinka']!=$_POST['lozinkaponovno']){
+            $this->view->render($this->viewDir . 'profil',[
+                'entitet'=>$_SESSION['autoriziran'],
+                'poruka'=>'Lozinka i lozinka ponovno ne odgovaraju!'
+            ]);
+            exit;
+        }
+
+        Operater::promjenaprofil([
+            'lozinka'=>password_hash($_POST['lozinka'], PASSWORD_BCRYPT),
+            'sifra'=>$_SESSION['autoriziran']->sifra
+        ]);
+
+        $this->index();
+
+       
+    }
 }
+
+
+    
+

@@ -119,9 +119,9 @@ class IndexController extends Controller
 
         
      public function test(){
-         //echo password_hash("a", PASSWORD_BCRYPT);
+         echo password_hash("a", PASSWORD_BCRYPT);
 
-         $veza = DB::getInstanca();
+      /*   $veza = DB::getInstanca();
          for($i=0;$i<500;$i++){
              $izraz = $veza->prepare('insert into clanudruge (ime,prezime,oib,brojdozvole) values (:ime,:prezime,:oib,:brojdozvole);');
              $izraz->execute([
@@ -132,7 +132,7 @@ class IndexController extends Controller
              ]);
              echo 'Gotov' . $i . '<br/>';
             }  
-
+*/
      }
 }
 
