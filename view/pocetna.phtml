@@ -1,3 +1,20 @@
-<a href="#" id="akcija">Odradi akciju</a>
 
-<div id="kontejner"></div>
+<video muted autoplay controls width="100%">
+
+    <source src="<?=APP::config('url') ?>public/video/pocetna2.webm"
+            type="video/webm">
+
+    Vaš preglednik ne podržava .webm video format!
+</video>
+
+<script>    
+    window.addEventListener('load', async () => {
+let video = document.querySelector('video[muted][autoplay]');
+try {
+    await video.play();
+}catch (err) {
+    video.controls = true;
+  }
+})
+
+</script>
