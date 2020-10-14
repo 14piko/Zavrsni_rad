@@ -20,7 +20,10 @@ class NadzornaplocaController extends AutorizacijaController
     }
 
     public function profil(){
-        $this->view->render($this->viewDir . 'profil');
+        $this->view->render($this->viewDir . 'profil',[
+            'entitet'=>$_SESSION['autoriziran'],
+            'poruka'=>''
+        ]);
     }
 
 }
