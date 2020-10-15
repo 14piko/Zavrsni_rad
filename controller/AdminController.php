@@ -2,7 +2,20 @@
 
 class AdminController extends AutorizacijaController
 {
-    
+    private $viewDir = 'privatno'
+    . DIRECTORY_SEPARATOR 
+    . 'operater' 
+    . DIRECTORY_SEPARATOR;
+
+    public function index()
+    {
+        $this->view->render($this->viewDir . 'index' , [
+               'entiteti'=>Operater::ucitajSve()
+            
+           ]);
+       }
+
+
     public function __construct()
     {
         parent::__construct();
@@ -15,5 +28,6 @@ class AdminController extends AutorizacijaController
             ]);
             exit;
         }
+   
     }
 }

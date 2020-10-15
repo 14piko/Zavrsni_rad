@@ -1,1 +1,38 @@
-Ovdje admin ima pravo upravljati operaterima!
+<a class="button expanded success" href="<?=APP::config('url') ?>operater/novo">
+<i class="fas fa-plus-square"></i> Dodaj novog operatera
+</a>
+
+<div style='overflow-x:auto'>
+<table cellpadding=5 border=1 cellspacing=0>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Lozinka</th>
+            <th>Uloga</th>
+            <th>Radnja</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($entiteti as $entitet): ?>
+            <tr>
+                <td><?=$entitet->email?></td>
+                <td><?=$entitet->ime?></td>
+                <td><?=$entitet->prezime?></td>
+                <td><?=$entitet->lozinka?></td>
+                <td><?=$entitet->uloga?></td>
+                <td>
+                <a href="<?=APP::config('url') ?>operater/promjena?sifra=<?=$entitet->sifra?>">
+                    <i class="fas fa-edit fa-2x"></i>
+                </a>
+                    <a onclick="return confirm('Sigurno obrisati?');"
+                    href="<?=APP::config('url') ?>operater/brisanje?sifra=<?=$entitet->sifra?>">
+                    <i class="far fa-trash-alt" style="color: red;"></i>
+                </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table> 
+</div>

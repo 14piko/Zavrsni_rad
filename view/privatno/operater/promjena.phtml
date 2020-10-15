@@ -1,0 +1,58 @@
+<form
+    action="<?=APP::config('url') ?>operater/promjena"
+    method="POST"
+    enctype="multipart/form-data">
+
+    <fieldset class = "fieldset">
+    <legend>Promjena osnovnih podataka o operateru</legend>
+  
+    
+    <div class="grid-x grid-padding-x">
+        <div class="large-6 small-12 cell">
+            <label>Email
+            <input type="text" name="email" value="<?=$entitet->email?>"/>
+        </label>
+    </div>
+    <div class="large-6 small-12 cell">
+        <label>Lozinka
+        <input type="password" name="lozinka">
+        </label> 
+    </div>  
+        <div class="large-6 small-12 cell">
+        <label>Ime
+        <input type="text" name="ime" value="<?=$entitet->ime?>" />
+        </label>
+    </div>       
+        <div class="large-6 small-12 cell">
+        <label>Prezime
+        <input type="text" name="prezime" value="<?=$entitet->prezime?>" />
+        </label>
+     </div>  
+        
+    </form>
+        <div class="large-6 small-12 cell">
+        <label>Uloga
+        <input type="text" name="uloga" placeholder="oper ili admin" value="<?=$entitet->uloga?>" />
+        </label>
+    </div>    
+</div>   
+
+    <input type="hidden" name="sifra" value="<?=$entitet->sifra?>">
+
+    <p>
+        <?=$poruka ?>
+    </p>
+
+    <div class="grid-x grid-padding-x">
+        <div class="large-6 small-12 cell">
+        <input type="submit" class="button expanded" 
+                value="Promijeni operatera"></input>
+        </div>
+        <div class="large-6 small-12 cell">
+        <a class="button expanded alert" href="<?=APP::config('url') ?>operater/index">
+        Odustani!
+        </a>
+        </div>
+    </div>
+    </fieldset>
+
