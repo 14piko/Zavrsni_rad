@@ -15,7 +15,7 @@
     </div>
     <div class="large-6 small-12 cell">
         <label>Lozinka
-        <input type="password" name="lozinka">
+        <input type="password" name="lozinka"/>
         </label> 
     </div>  
         <div class="large-6 small-12 cell">
@@ -28,12 +28,13 @@
         <input type="text" name="prezime" value="<?=$entitet->prezime?>" />
         </label>
      </div>  
-        
-    </form>
-        <div class="large-6 small-12 cell">
-        <label>Uloga
-        <input type="text" name="uloga" placeholder="oper ili admin" value="<?=$entitet->uloga?>" />
-        </label>
+    <label for="uloga">Odaberite ulogu</label>
+    <select name="uloga" id="uloga">
+    <option placeholder="Odaberite ulogu" value="" placeholder="Odaberite ulogu"></option>
+    <option value="admin">admin</option>
+    <option value="oper">oper</option>
+    </select>
+    </label>
     </div>    
 </div>   
 
@@ -55,4 +56,5 @@
         </div>
     </div>
     </fieldset>
+    </form>
 

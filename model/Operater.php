@@ -32,7 +32,7 @@ class Operater
             'email'=>$entitet['email'],
             'ime'=>$entitet['ime'],
             'prezime'=>$entitet['prezime'],
-            'lozinka'=>$entitet['lozinka'],
+            'lozinka'=>password_hash($entitet['lozinka'],PASSWORD_BCRYPT),
             'uloga'=>$entitet['uloga']
 
         ]);
@@ -52,7 +52,7 @@ class Operater
             'email'=>$entitet['email'],
             'ime'=>$entitet['ime'],
             'prezime'=>$entitet['prezime'],
-            'lozinka'=>$entitet['lozinka'],
+            'lozinka'=>password_hash($entitet['lozinka'],PASSWORD_BCRYPT),
             'uloga'=>$entitet['uloga'],
             'sifra'=>$entitet['sifra']
         ]);
