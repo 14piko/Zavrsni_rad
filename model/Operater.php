@@ -6,7 +6,7 @@ class Operater
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('       
-       select * from operater;       
+       select sifra,email,ime,prezime,uloga from operater;       
         ');
         $izraz->execute();
         return $izraz->fetchAll();
